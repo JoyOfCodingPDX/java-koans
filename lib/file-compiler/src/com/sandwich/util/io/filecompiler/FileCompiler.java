@@ -1,14 +1,14 @@
 package com.sandwich.util.io.filecompiler;
 
+import com.sandwich.util.io.FileUtils;
+import com.sandwich.util.io.ui.DefaultErrorPresenter;
+import com.sandwich.util.io.ui.ErrorPresenter;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.sandwich.util.io.FileUtils;
-import com.sandwich.util.io.ui.DefaultErrorPresenter;
-import com.sandwich.util.io.ui.ErrorPresenter;
 
 public class FileCompiler {
 	
@@ -38,6 +38,9 @@ public class FileCompiler {
 	
 	public static void compile(File src, final File bin, final CompilationListener listener, 
 			final long timeout, final String[] classpath) throws IOException {
+
+    System.out.println("++ Compiling " + src + " into " + bin);
+
 		if(!bin.exists()){
 			if(!bin.mkdir()){
 				System.err.println("Was unable to create: "+bin);

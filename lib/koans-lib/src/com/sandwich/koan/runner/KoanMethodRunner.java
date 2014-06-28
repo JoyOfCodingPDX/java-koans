@@ -1,14 +1,5 @@
 package com.sandwich.koan.runner;
 
-import static com.sandwich.koan.constant.KoanConstants.EOLS;
-import static com.sandwich.koan.constant.KoanConstants.EXPECTATION_LEFT_ARG;
-import static com.sandwich.koan.constant.KoanConstants.EXPECTED_LEFT;
-import static com.sandwich.koan.constant.KoanConstants.EXPECTED_RIGHT;
-import static com.sandwich.koan.constant.KoanConstants.__;
-
-import java.lang.reflect.Method;
-import java.util.logging.Logger;
-
 import com.sandwich.koan.KoanIncompleteException;
 import com.sandwich.koan.KoanMethod;
 import com.sandwich.koan.cmdline.CommandLineArgumentRunner;
@@ -20,6 +11,13 @@ import com.sandwich.util.io.directories.DirectoryManager;
 import com.sandwich.util.io.filecompiler.CompilerConfig;
 import com.sandwich.util.io.filecompiler.FileCompiler;
 
+import java.lang.reflect.Method;
+import java.security.CodeSource;
+import java.security.ProtectionDomain;
+import java.util.logging.Logger;
+
+import static com.sandwich.koan.constant.KoanConstants.*;
+
 public class KoanMethodRunner {
 
 	private static final String EXPECTED_PROPERTY_KEY = "expected";
@@ -28,8 +26,16 @@ public class KoanMethodRunner {
 		try {
 			Method method = koan.getMethod();
 			method.setAccessible(true);
+
+      System.out.println("++ Invoking " + koan + " on " + suite);
+      ProtectionDomain protectionDomain = method.getClass().getProtectionDomain();
+      System.out.println("++ Loaded koan method from " + getLocation(protectionDomain));
+
 			method.invoke(suite);
 		} catch (Throwable t) {
+      System.out.println("++ Encountered exception");
+      t.printStackTrace(System.out);
+
 			Throwable tempException = t;
 			String message = ExceptionUtils.convertToPopulatedStackTraceString(t);
 			while(tempException != null){
@@ -43,12 +49,27 @@ public class KoanMethodRunner {
 				}
 				tempException = tempException.getCause();
 			}
-			return new KoanMethodResult(koan, message, getOriginalLineNumber(t, suite.getClass()));
+      KoanMethodResult result = new KoanMethodResult(koan, message, getOriginalLineNumber(t, suite.getClass()));
+      System.out.println("++ Failed test " + result);
+      return result;
 		}
+
+    System.out.println("++ Passed test " + koan);
 		return KoanMethodResult.PASSED;
 	}
-	
-	private static void logExpectationOnWrongSideWarning(Class<?> firstFailingSuite, Method firstFailingMethod) {
+
+  private static String getLocation(ProtectionDomain protectionDomain) {
+    if (protectionDomain == null) {
+      return "<unknown location>";
+    }
+    CodeSource codeSource = protectionDomain.getCodeSource();
+    if (codeSource == null) {
+      return "<unknown code source>";
+    }
+    return codeSource.getLocation().toString();
+  }
+
+  private static void logExpectationOnWrongSideWarning(Class<?> firstFailingSuite, Method firstFailingMethod) {
 		Logger.getLogger(CommandLineArgumentRunner.class.getSimpleName()).severe(
 				new StringBuilder(
 						firstFailingSuite.getSimpleName()).append(

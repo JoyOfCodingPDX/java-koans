@@ -1,5 +1,10 @@
 package com.sandwich.util.io.classloader;
 
+import com.sandwich.util.io.filecompiler.CompilationListener;
+import com.sandwich.util.io.filecompiler.CompilerConfig;
+import com.sandwich.util.io.filecompiler.FileCompiler;
+import com.sandwich.util.io.filecompiler.FileCompilerAction;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -9,11 +14,6 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import com.sandwich.util.io.filecompiler.CompilationListener;
-import com.sandwich.util.io.filecompiler.CompilerConfig;
-import com.sandwich.util.io.filecompiler.FileCompiler;
-import com.sandwich.util.io.filecompiler.FileCompilerAction;
 
 public abstract class DynamicClassLoader extends ClassLoader {
 
@@ -110,8 +110,10 @@ public abstract class DynamicClassLoader extends ClassLoader {
 	}
 
 	public Class<?> loadClass(URL url, String className){
+    System.out.println("++ Loading class " + className + " from " + url);
 		Class<?> clazz = classesByLocation.get(url);
 		if(clazz != null){
+      System.out.println("++ Found an existing class for " + url);
 			return clazz;
 		}
 		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
