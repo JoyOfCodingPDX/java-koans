@@ -1,10 +1,10 @@
 package com.sandwich.koan;
 
-import java.lang.reflect.Method;
-
 import com.sandwich.koan.path.xmltransformation.KoanElementAttributes;
 import com.sandwich.koan.path.xmltransformation.RbVariableInjector;
 import com.sandwich.util.io.KoanSuiteCompilationListener;
+
+import java.lang.reflect.Method;
 
 public class KoanMethod {
 	
@@ -67,10 +67,17 @@ public class KoanMethod {
 	
 	@Override public String toString(){
 		return "{"+getMethod().getName()
-				+" : "+ (lesson.length() > 20 ? lesson.substring(0, 20) + "..." : lesson)+"}";
+				+" : "+ first20CharactersOfLessonName() +"}";
 	}
 
-	@Override
+  private String first20CharactersOfLessonName() {
+    if (lesson == null) {
+      return "<null lesson name>";
+    }
+    return (lesson.length() > 20 ? lesson.substring(0, 20) + "..." : lesson);
+  }
+
+  @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -97,6 +104,6 @@ public class KoanMethod {
 			return false;
 		return true;
 	}
-	
+
 	
 }
