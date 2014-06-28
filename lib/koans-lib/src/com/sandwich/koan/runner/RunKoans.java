@@ -1,14 +1,5 @@
 package com.sandwich.koan.runner;
 
-import java.io.File;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.sandwich.koan.Koan;
 import com.sandwich.koan.KoanClassLoader;
 import com.sandwich.koan.KoanMethod;
@@ -28,6 +19,15 @@ import com.sandwich.util.io.classloader.DynamicClassLoader;
 import com.sandwich.util.io.directories.DirectoryManager;
 import com.sandwich.util.io.filecompiler.CompilationListener;
 import com.sandwich.util.io.filecompiler.FileCompiler;
+
+import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class RunKoans extends AbstractArgumentBehavior {
 
@@ -72,6 +72,7 @@ public class RunKoans extends AbstractArgumentBehavior {
 							break;
 						}else{
 							successfull++;
+              System.out.println("++ " + successfull + " Koans passing " + koan);
 						}
 					}
 					if (failure == null) {
