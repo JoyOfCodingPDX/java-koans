@@ -66,6 +66,7 @@
           <additionalClasspathElements>
             <additionalClasspathElement>${basedir}/../koans/app/config</additionalClasspathElement>
           </additionalClasspathElements>
+          <failIfNoTests>false</failIfNoTests>
         </configuration>
       </plugin>
     </plugins>
