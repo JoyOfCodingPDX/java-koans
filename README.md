@@ -1,6 +1,6 @@
 # Java Koans 
 
-[![Build Status](https://travis-ci.org/matyb/java-koans.png?branch=master)](https://travis-ci.org/matyb/java-koans)
+[![Java CI with Maven](https://github.com/DavidWhitlock/java-koans/actions/workflows/maven.yml/badge.svg)](https://github.com/DavidWhitlock/java-koans/actions/workflows/maven.yml)
 
 Running Instructions:
 =====================
