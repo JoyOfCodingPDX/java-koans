@@ -4,12 +4,12 @@
   <parent>
     <groupId>io.github.davidwhitlock.com.sandwich</groupId>
     <artifactId>koans-parent</artifactId>
-    <version>Summer2020</version>
+    <version>2021.0.0</version>
   </parent>
   <groupId>com.sandwich</groupId>
   <artifactId>koans-lib</artifactId>
   <packaging>jar</packaging>
-  <version>Summer2020</version>
+  <version>2021.0.0</version>
   <name>Java Koans Framework</name>
   <url>https://github.com/DavidWhitlock/java-koans</url>
   <scm>
