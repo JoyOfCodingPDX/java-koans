@@ -46,13 +46,6 @@
   <prerequisites>
     <maven>3.5.2</maven>
   </prerequisites>
-  <repositories>
-    <repository>
-      <id>CS410J</id>
-      <name>CS410J Maven Repository</name>
-      <url>https://dl.bintray.com/davidwhitlock/maven</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>io.github.davidwhitlock.com.sandwich</groupId>
@@ -77,7 +70,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.4.0</version>
+        <version>3.0.0</version>
         <executions>
           <execution>
             <goals>
@@ -100,7 +93,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0</version>
         <configuration>
           <filesets>
             <fileset>
