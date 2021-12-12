@@ -4,12 +4,12 @@
   <parent>
     <groupId>io.github.davidwhitlock.com.sandwich</groupId>
     <artifactId>koans-parent</artifactId>
-    <version>2021.0.1</version>
+    <version>2022.0.0</version>
   </parent>
   <groupId>io.github.davidwhitlock.com.sandwich</groupId>
   <artifactId>koans-lib</artifactId>
   <packaging>jar</packaging>
-  <version>2021.0.1</version>
+  <version>2022.0.0</version>
   <name>Java Koans Framework</name>
   <url>https://github.com/DavidWhitlock/java-koans</url>
   <scm>
@@ -36,13 +36,6 @@
   <prerequisites>
     <maven>3.5.2</maven>
   </prerequisites>
-  <repositories>
-    <repository>
-      <id>CS410J</id>
-      <name>CS410J Maven Repository</name>
-      <url>https://dl.bintray.com/davidwhitlock/maven</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
