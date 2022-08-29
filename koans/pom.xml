@@ -4,12 +4,12 @@
   <parent>
     <groupId>io.github.davidwhitlock.com.sandwich</groupId>
     <artifactId>koans-parent</artifactId>
-    <version>2022.1.0</version>
+    <version>2023.0.0-SNAPSHOT</version>
   </parent>
   <groupId>io.github.davidwhitlock.com.sandwich</groupId>
   <artifactId>java-koans</artifactId>
   <packaging>jar</packaging>
-  <version>2022.1.0</version>
+  <version>2023.0.0-SNAPSHOT</version>
   <name>Java Koans</name>
   <inceptionYear>2012</inceptionYear>
   <url>https://github.com/DavidWhitlock/java-koans</url>
@@ -50,7 +50,7 @@
     <dependency>
       <groupId>io.github.davidwhitlock.com.sandwich</groupId>
       <artifactId>koans-lib</artifactId>
-      <version>2022.1.0</version>
+      <version>2023.0.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <properties>
