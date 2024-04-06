@@ -4,10 +4,10 @@
   <parent>
     <artifactId>cs410j</artifactId>
     <groupId>io.github.davidwhitlock.cs410J</groupId>
-    <version>2024.0.0</version>
+    <version>2024.0.1</version>
   </parent>
   <groupId>io.github.davidwhitlock.com.sandwich</groupId>
-  <version>2024.0.0</version>
+  <version>2024.0.1</version>
   <artifactId>koans-parent</artifactId>
   <packaging>pom</packaging>
   <name>Java Koans Parent POM</name>
