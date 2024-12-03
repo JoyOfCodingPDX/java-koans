@@ -3,6 +3,8 @@ package com.sandwich.util;
 import com.sandwich.koan.KoanIncompleteException;
 import com.sandwich.koan.constant.KoanConstants;
 
+import static com.sandwich.koan.constant.KoanConstants.__;
+
 public class Assert {
 
 	static final String EXPECTED	= "expected:<";
@@ -66,9 +68,29 @@ public class Assert {
 	}
 	
 	public static void fail(String msg, Object o0, Object o1){
-		fail(msg+(msg.length() == 0 ? "" : KoanConstants.EOL)+EXPECTED+o0+BUT_WAS+o1+END);
+		Object expected = o0;
+		Object actual = o1;
+
+		if (wasNotAttempted(actual)) {
+			expected = "Something other than " + __;
+		}
+
+		String message = new StringBuilder()
+			.append(msg)
+			.append(msg.length() == 0 ? "" : KoanConstants.EOL)
+			.append(EXPECTED)
+			.append(expected)
+			.append(BUT_WAS)
+			.append(actual)
+			.append(END)
+			.toString();
+		fail(message);
 	}
-	
+
+	private static boolean wasNotAttempted(Object actual) {
+		return actual == __;
+	}
+
 	public static void fail(String msg){
 		throw new KoanIncompleteException(msg);
 	}
