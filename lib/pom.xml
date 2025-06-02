@@ -4,16 +4,28 @@
   <parent>
     <groupId>io.github.davidwhitlock.joy.com.sandwich</groupId>
     <artifactId>koans-parent</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.2</version>
   </parent>
   <artifactId>koans-lib</artifactId>
   <packaging>jar</packaging>
-  <version>1.2.2-SNAPSHOT</version>
+  <version>1.2.2</version>
   <name>Java Koans Framework</name>
+  <description>Supporting library code for running Java Koans</description>
   <url>https://github.com/DavidWhitlock/java-koans</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <scm>
-    <connection>scm:git:git@github.com:DavidWhitlock/java-koans.git</connection>
+    <connection>scm:git:git@github.com:JoyOfCodingPDX/java-koans.git</connection>
+    <developerConnection>scm:git:git@github.com:JoyOfCodingPDX/java-koans.git</developerConnection>
+    <url>https://github.com/JoyOfCodingPDX/java-koans/tree/main</url>
+    <tag>HEAD</tag>
   </scm>
+
   <developers>
     <developer>
       <id>matyb</id>
@@ -66,8 +78,8 @@
   <repositories>
     <repository>
       <name>Central Portal Snapshots</name>
-      <id>central-portal-snapshots</id>
-      <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+      <id>central-portals</id>
+      <url>https://central.sonatype.com/repository/mavens/</url>
       <releases>
         <enabled>false</enabled>
       </releases>

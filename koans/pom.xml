@@ -4,14 +4,29 @@
   <parent>
     <groupId>io.github.davidwhitlock.joy.com.sandwich</groupId>
     <artifactId>koans-parent</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.2</version>
   </parent>
   <artifactId>java-koans</artifactId>
   <packaging>jar</packaging>
-  <version>1.2.2-SNAPSHOT</version>
+  <version>1.2.2</version>
   <name>Java Koans</name>
   <inceptionYear>2012</inceptionYear>
-  <url>https://github.com/DavidWhitlock/java-koans</url>
+  <description>Java Koans to learn the Java language and APIs</description>
+  <url>https://github.com/JoyOfCodingPDX/java-koans</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <connection>scm:git:git@github.com:JoyOfCodingPDX/java-koans.git</connection>
+    <developerConnection>scm:git:git@github.com:JoyOfCodingPDX/java-koans.git</developerConnection>
+    <url>https://github.com/JoyOfCodingPDX/java-koans/tree/main</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <developers>
     <developer>
       <id>matyb</id>
@@ -49,7 +64,7 @@
     <dependency>
       <groupId>io.github.davidwhitlock.joy.com.sandwich</groupId>
       <artifactId>koans-lib</artifactId>
-      <version>1.2.2-SNAPSHOT</version>
+      <version>1.2.2</version>
     </dependency>
   </dependencies>
   <properties>
