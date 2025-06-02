@@ -4,13 +4,48 @@
   <parent>
     <artifactId>joy</artifactId>
     <groupId>io.github.davidwhitlock.joy</groupId>
-    <version>1.2.0</version>
+    <version>1.2.2</version>
   </parent>
   <groupId>io.github.davidwhitlock.joy.com.sandwich</groupId>
-  <version>1.2.0</version>
+  <version>1.2.2</version>
   <artifactId>koans-parent</artifactId>
   <packaging>pom</packaging>
   <name>Java Koans Parent POM</name>
+  <description>Parent project for the Joy of Coding take on Java Koans</description>
+  <url>https://web.cecs.pdx.edu/~whitlock/</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>matyb</id>
+      <name>Mat Bentley</name>
+      <url>https://github.com/matyb</url>
+      <roles>
+        <role>java-koans author</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>dwhitlock</id>
+      <name>David Whitlock</name>
+      <url>https://www.cs.pdx.edu/~whitlock</url>
+      <roles>
+        <role>Maven-izer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git@github.com:JoyOfCodingPDX/java-koans.git</connection>
+    <developerConnection>scm:git:git@github.com:JoyOfCodingPDX/java-koans.git</developerConnection>
+    <url>https://github.com/JoyOfCodingPDX/java-koans/tree/main</url>
+    <tag>HEAD</tag>
+  </scm>
+
   <modules>
     <module>lib</module>
     <module>koans</module>
@@ -18,9 +53,9 @@
 
   <repositories>
     <repository>
-      <id>maven-snapshots</id>
-      <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-      <layout>default</layout>
+      <name>Central Portal Snapshots</name>
+      <id>central-portals</id>
+      <url>https://central.sonatype.com/repository/mavens/</url>
       <releases>
         <enabled>false</enabled>
       </releases>
