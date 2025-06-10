@@ -15,7 +15,7 @@ import static com.sandwich.util.Assert.assertEquals;
 
 public class AboutDates {
 
-    private LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(100010001000L), ZoneId.systemDefault());
+    private LocalDateTime date = LocalDateTime.ofInstant(Instant.ofEpochMilli(100010001000L), ZoneId.of("-07:00"));
 
     @Koan
     public void dateToString() {
@@ -42,6 +42,7 @@ public class AboutDates {
 
     @Koan
     public void usingDateTimeFormatterToFormatDateShort() {
+        // Careful, formatted dates may contain non-breaking spaces!
         String formattedDate = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).format(date);
         assertEquals(formattedDate, __);
     }
