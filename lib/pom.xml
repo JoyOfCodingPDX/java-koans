@@ -4,11 +4,11 @@
   <parent>
     <groupId>io.github.davidwhitlock.joy.com.sandwich</groupId>
     <artifactId>koans-parent</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
   </parent>
   <artifactId>koans-lib</artifactId>
   <packaging>jar</packaging>
-  <version>1.2.2</version>
+  <version>1.2.3</version>
   <name>Java Koans Framework</name>
   <description>Supporting library code for running Java Koans</description>
   <url>https://github.com/DavidWhitlock/java-koans</url>
