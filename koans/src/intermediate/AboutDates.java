@@ -42,7 +42,7 @@ public class AboutDates {
 
     @Koan
     public void usingDateTimeFormatterToFormatDateShort() {
-        // Careful, formatted dates may contain non-breaking spaces!
+        // Careful, formatted dates may contain non-breaking spaces like \u202F!
         String formattedDate = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).format(date);
         assertEquals(formattedDate, __);
     }
