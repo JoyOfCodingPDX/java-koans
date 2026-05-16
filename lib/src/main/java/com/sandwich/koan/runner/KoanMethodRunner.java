@@ -15,6 +15,7 @@ import com.sandwich.koan.cmdline.CommandLineArgumentRunner;
 import com.sandwich.koan.constant.KoanConstants;
 import com.sandwich.koan.result.KoanMethodResult;
 import com.sandwich.util.ExceptionUtils;
+import com.sandwich.util.Assert;
 import com.sandwich.util.Strings;
 import com.sandwich.util.io.directories.DirectoryManager;
 import com.sandwich.util.io.filecompiler.CompilerConfig;
@@ -23,12 +24,17 @@ import com.sandwich.util.io.filecompiler.FileCompiler;
 public class KoanMethodRunner {
 
 	private static final String EXPECTED_PROPERTY_KEY = "expected";
+	private static final String NO_ASSERTION_MESSAGE = "No assertion was invoked in this koan.";
 	
 	public static KoanMethodResult run(Object suite, KoanMethod koan){
+		Assert.resetAssertionTracking();
 		try {
 			Method method = koan.getMethod();
 			method.setAccessible(true);
 			method.invoke(suite);
+			if(!Assert.wasAssertionInvoked()){
+				return new KoanMethodResult(koan, NO_ASSERTION_MESSAGE, null);
+			}
 		} catch (Throwable t) {
 			Throwable tempException = t;
 			String message = ExceptionUtils.convertToPopulatedStackTraceString(t);
@@ -44,6 +50,8 @@ public class KoanMethodRunner {
 				tempException = tempException.getCause();
 			}
 			return new KoanMethodResult(koan, message, getOriginalLineNumber(t, suite.getClass()));
+		} finally {
+			Assert.resetAssertionTracking();
 		}
 		return KoanMethodResult.PASSED;
 	}
