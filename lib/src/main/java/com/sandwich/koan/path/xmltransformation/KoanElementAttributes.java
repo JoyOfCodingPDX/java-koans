@@ -3,11 +3,12 @@ package com.sandwich.koan.path.xmltransformation;
 
 public class KoanElementAttributes{
 	
-	public String name, displayIncompleteKoanException, className;
+	public String name, displayIncompleteKoanException, requireAssertion, className;
 	
-	public KoanElementAttributes(String name, String displayIncompleteKoanException, String className){
+	public KoanElementAttributes(String name, String displayIncompleteKoanException, String requireAssertion, String className){
 		this.name = name;
 		this.displayIncompleteKoanException = displayIncompleteKoanException;
+		this.requireAssertion = requireAssertion;
 		this.className = className;
 	}
 
@@ -21,6 +22,8 @@ public class KoanElementAttributes{
 				* result
 				+ ((displayIncompleteKoanException == null) ? 0
 						: displayIncompleteKoanException.hashCode());
+		result = prime * result
+				+ ((requireAssertion == null) ? 0 : requireAssertion.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -45,6 +48,11 @@ public class KoanElementAttributes{
 		} else if (!displayIncompleteKoanException
 				.equals(other.displayIncompleteKoanException))
 			return false;
+		if (requireAssertion == null) {
+			if (other.requireAssertion != null)
+				return false;
+		} else if (!requireAssertion.equals(other.requireAssertion))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -57,7 +65,8 @@ public class KoanElementAttributes{
 	public String toString() {
 		return "KoanElementAttributes [name=" + name
 				+ ", displayIncompleteKoanException="
-				+ displayIncompleteKoanException + ", className=" + className
+				+ displayIncompleteKoanException + ", requireAssertion="
+				+ requireAssertion + ", className=" + className
 				+ "]";
 	}
 	

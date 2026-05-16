@@ -10,8 +10,22 @@ public class Assert {
 	static final String EXPECTED	= "expected:<";
 	static final String END 		= ">";
 	static final String BUT_WAS 	= "> but was:<";
+	private static final ThreadLocal<Integer> ASSERTION_COUNT = ThreadLocal.withInitial(() -> 0);
+
+	public static void resetAssertionTracking() {
+		ASSERTION_COUNT.set(0);
+	}
+
+	public static boolean wasAssertionInvoked() {
+		return ASSERTION_COUNT.get() > 0;
+	}
+
+	private static void assertionInvoked() {
+		ASSERTION_COUNT.set(ASSERTION_COUNT.get() + 1);
+	}
 	
 	public static void assertEquals(String msg, Object o0, Object o1){
+		assertionInvoked();
 		if(o0 == null && o1 != null){
 			fail(msg, o0, o1);
 		}
@@ -34,30 +48,36 @@ public class Assert {
 	}
 
 	public static void assertTrue(Object t){
+		assertionInvoked();
 		assertEquals(true,t);
 	}
 	
 	public static void assertFalse(Object f){
+		assertionInvoked();
 		assertEquals(false,f);
 	}
 	
 	public static void assertNull(Object o){
+		assertionInvoked();
 		assertEquals(null, o);
 	}
 	
 	public static void assertNotNull(Object o){
+		assertionInvoked();
 		if(o == null){
 			fail("something other than null",o);
 		}
 	}
 	
 	public static void assertSame(Object o0, Object o1){
+		assertionInvoked();
 		if(o0 != o1){
 			fail("Are the same instance... ",o0,o1);
 		}
 	}
 	
 	public static void assertNotSame(Object o0, Object o1){
+		assertionInvoked();
 		if(o0 == o1){
 			fail("Not the same instance... ",o0,o1);
 		}
@@ -92,6 +112,7 @@ public class Assert {
 	}
 
 	public static void fail(String msg){
+		assertionInvoked();
 		throw new KoanIncompleteException(msg);
 	}
 }

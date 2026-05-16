@@ -11,6 +11,7 @@ public class KoanMethod {
 	private final transient Method method;
 	private final String lesson;
 	private final boolean displayIncompleteException;
+	private final boolean requiresAssertion;
 	private static final KoanSuiteCompilationListener listener = new KoanSuiteCompilationListener();
 	
 	private KoanMethod(KoanElementAttributes koanAttributes) throws SecurityException, NoSuchMethodException{
@@ -26,27 +27,33 @@ public class KoanMethod {
 	}
 	
 	public static KoanMethod getInstance(Method method){
-		return new KoanMethod(null, method, true);
+		return new KoanMethod(null, method, true, true);
+	}
+
+	public static KoanMethod getInstance(Method method, boolean requiresAssertion){
+		return new KoanMethod(null, method, true, requiresAssertion);
 	}
 	
 	public static KoanMethod getInstance(String lesson, Method method){
-		return new KoanMethod(lesson, method, true);
+		return new KoanMethod(lesson, method, true, true);
 	}
 	
-	private KoanMethod(String lesson, Method method, boolean displayIncompleteException){
+	private KoanMethod(String lesson, Method method, boolean displayIncompleteException, boolean requiresAssertion){
 		if(method == null){
 			throw new IllegalArgumentException("method may not be null");
 		}
 		this.method = method;
 		this.lesson = new RbVariableInjector(lesson, method).injectLessonVariables();
 		this.displayIncompleteException = displayIncompleteException;
+		this.requiresAssertion = requiresAssertion;
 	}
 
 	public KoanMethod(String lesson, KoanElementAttributes koanAttributes) throws SecurityException, NoSuchMethodException {
 		this(	lesson, 
 				KoanClassLoader.getInstance().loadClass(koanAttributes.className, listener)
 					.getMethod(koanAttributes.name),
-				!"false".equalsIgnoreCase(koanAttributes.displayIncompleteKoanException));
+				!"false".equalsIgnoreCase(koanAttributes.displayIncompleteKoanException),
+				!"false".equalsIgnoreCase(koanAttributes.requireAssertion));
 	}
 
 	public String getLesson() {
@@ -60,9 +67,13 @@ public class KoanMethod {
 	public boolean displayIncompleteException() {
 		return displayIncompleteException;
 	}
+
+	public boolean requiresAssertion() {
+		return requiresAssertion;
+	}
 	
 	public KoanMethod clone(Method method){
-		return new KoanMethod(lesson, method, displayIncompleteException);
+		return new KoanMethod(lesson, method, displayIncompleteException, requiresAssertion);
 	}
 	
 	@Override public String toString(){
@@ -75,6 +86,7 @@ public class KoanMethod {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (displayIncompleteException ? 1231 : 1237);
+		result = prime * result + (requiresAssertion ? 1231 : 1237);
 		result = prime * result + ((lesson == null) ? 0 : lesson.hashCode());
 		return result;
 	}
@@ -89,6 +101,8 @@ public class KoanMethod {
 			return false;
 		KoanMethod other = (KoanMethod) obj;
 		if (displayIncompleteException != other.displayIncompleteException)
+			return false;
+		if (requiresAssertion != other.requiresAssertion)
 			return false;
 		if (lesson == null) {
 			if (other.lesson != null)

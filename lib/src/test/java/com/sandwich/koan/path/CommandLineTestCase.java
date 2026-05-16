@@ -105,7 +105,7 @@ public abstract class CommandLineTestCase {
 			KoanSuiteCompilationListener listener = new KoanSuiteCompilationListener();
 			for(Method m : loader.loadClass(suite, listener).getMethods()){
 				if(m.getAnnotation(Koan.class) != null){
-					methodsByName.put(m.getName(), new KoanElementAttributes(m.getName(), "", m.getDeclaringClass().getName()));
+					methodsByName.put(m.getName(), new KoanElementAttributes(m.getName(), "", "", m.getDeclaringClass().getName()));
 				}
 			}
 			tempSuitesAndMethods.put(suite, methodsByName);
