@@ -42,4 +42,12 @@ public class KoanMethodRunnerTest extends CommandLineTestCase {
 		assertTrue(first.isPassed());
 		assertFalse(second.isPassed());
 	}
+
+	@Test
+	public void koanWithoutAssertionCanBeAllowedToPass() throws Exception {
+		KoanMethodResult result = KoanMethodRunner.run(
+			new NoAssertionKoan(),
+			KoanMethod.getInstance(NoAssertionKoan.class.getDeclaredMethod("koan"), false));
+		assertTrue(result.isPassed());
+	}
 }

@@ -32,7 +32,7 @@ public class KoanMethodRunner {
 			Method method = koan.getMethod();
 			method.setAccessible(true);
 			method.invoke(suite);
-			if(!Assert.wasAssertionInvoked()){
+			if(koan.requiresAssertion() && !Assert.wasAssertionInvoked()){
 				return new KoanMethodResult(koan, NO_ASSERTION_MESSAGE, null);
 			}
 		} catch (Throwable t) {

@@ -95,11 +95,14 @@ public class XmlToPathTransformerImpl implements XmlToPathTransformer {
 						.getNamedItem("displayIncompleteKoanException");
 				String displayIncompleteKoanException = displayKoanIncompleteExceptionNode == null ? null
 						: displayKoanIncompleteExceptionNode.getNodeValue();
+				Node requireAssertionNode = attributes.getNamedItem("requireAssertion");
+				String requireAssertion = requireAssertionNode == null ? null
+						: requireAssertionNode.getNodeValue();
 				if (rawKoanAttributesByMethodName.containsKey(name)) {
 					throw new DuplicateKoanException(className, name);
 				}
 				rawKoanAttributesByMethodName.put(name, new KoanElementAttributes(
-					name, displayIncompleteKoanException, className));
+					name, displayIncompleteKoanException, requireAssertion, className));
 			}
 		}
 		return rawKoanAttributesByMethodName;
@@ -113,4 +116,3 @@ public class XmlToPathTransformerImpl implements XmlToPathTransformer {
 	}
 
 }
-
