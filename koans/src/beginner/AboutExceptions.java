@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import static com.sandwich.koan.constant.KoanConstants.__;
 import static com.sandwich.util.Assert.assertEquals;
+import static com.sandwich.util.Assert.assertTrue;
 
 public class AboutExceptions {
 
@@ -103,6 +104,7 @@ public class AboutExceptions {
     public void catchUncheckedExceptions() {
         // What do you need to do to catch the unchecked exception?
         doUncheckedStuff();
+        assertTrue(true);
     }
 
     @SuppressWarnings("serial")

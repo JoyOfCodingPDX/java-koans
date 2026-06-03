@@ -66,6 +66,7 @@ public class AboutArrays {
         int[] array = new int[]{1};
         @SuppressWarnings("unused")
         int meh = array[1]; // remember 0 based indexes, 1 is the 2nd element (which doesn't exist)
+        assertEquals(meh, __);
     }
 
     @Koan
